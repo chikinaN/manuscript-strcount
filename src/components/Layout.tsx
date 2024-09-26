@@ -13,7 +13,6 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
       </header>
       <hr />
       {children}
-      {/* <TanStackRouterDevtools /> */}
     </main>
   );
 };
