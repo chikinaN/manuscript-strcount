@@ -9,4 +9,7 @@ export default defineConfig({
     react()
   ],
   base: '/manuscript-strcount/',
+  build: {
+    outDir: 'docs'
+  }
 })
