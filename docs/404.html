@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script>
+		const url = window.location.href;
+		const project = url.split('/')[3];
+		console.log(project);
+		location.href = `/${project}/`;
+	</script>
+</head>
+<body>
+	<h1>404 not found</h1>
+	<p>お探しのページは見つかりませんでした。</p>
+	<p class="redirect">`/`にredirectします</p>
+</body>
+</html>
