@@ -1,1 +1,0 @@
-import{c as t,j as o}from"./index-CvhBCLOr.js";const n=t("/manuscript-strcount/about")({component:e});function e(){return o.jsx("div",{className:"p-2",children:"Hello from About!"})}export{n as Route};

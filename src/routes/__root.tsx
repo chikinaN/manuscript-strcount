@@ -3,10 +3,13 @@ import { Layout } from '../components/Layout'
 import { TanStackRouterDevtools } from '@tanstack/router-devtools'
 
 export const Route = createRootRoute({
-  component: () => (
-    <Layout>
-      <Outlet />
-      <TanStackRouterDevtools />
-    </Layout>
-  ),
+  component: () => {
+    const dev = import.meta.env.DEV
+    return (
+      <Layout>
+        <Outlet />
+        {dev && <TanStackRouterDevtools />}
+      </Layout>
+    )
+  }
 })
