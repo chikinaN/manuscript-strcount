@@ -16,47 +16,37 @@ import { Route as rootRoute } from './routes/__root'
 
 // Create Virtual Routes
 
-const ManuscriptStrcountIndexLazyImport = createFileRoute(
-  '/manuscript-strcount/',
-)()
-const ManuscriptStrcountAboutLazyImport = createFileRoute(
-  '/manuscript-strcount/about',
-)()
+const AboutLazyImport = createFileRoute('/about')()
+const IndexLazyImport = createFileRoute('/')()
 
 // Create/Update Routes
 
-const ManuscriptStrcountIndexLazyRoute =
-  ManuscriptStrcountIndexLazyImport.update({
-    path: '/manuscript-strcount/',
-    getParentRoute: () => rootRoute,
-  } as any).lazy(() =>
-    import('./routes/manuscript-strcount/index.lazy').then((d) => d.Route),
-  )
+const AboutLazyRoute = AboutLazyImport.update({
+  path: '/about',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/about.lazy').then((d) => d.Route))
 
-const ManuscriptStrcountAboutLazyRoute =
-  ManuscriptStrcountAboutLazyImport.update({
-    path: '/manuscript-strcount/about',
-    getParentRoute: () => rootRoute,
-  } as any).lazy(() =>
-    import('./routes/manuscript-strcount/about.lazy').then((d) => d.Route),
-  )
+const IndexLazyRoute = IndexLazyImport.update({
+  path: '/',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/index.lazy').then((d) => d.Route))
 
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/manuscript-strcount/about': {
-      id: '/manuscript-strcount/about'
-      path: '/manuscript-strcount/about'
-      fullPath: '/manuscript-strcount/about'
-      preLoaderRoute: typeof ManuscriptStrcountAboutLazyImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexLazyImport
       parentRoute: typeof rootRoute
     }
-    '/manuscript-strcount/': {
-      id: '/manuscript-strcount/'
-      path: '/manuscript-strcount'
-      fullPath: '/manuscript-strcount'
-      preLoaderRoute: typeof ManuscriptStrcountIndexLazyImport
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutLazyImport
       parentRoute: typeof rootRoute
     }
   }
@@ -65,38 +55,38 @@ declare module '@tanstack/react-router' {
 // Create and export the route tree
 
 export interface FileRoutesByFullPath {
-  '/manuscript-strcount/about': typeof ManuscriptStrcountAboutLazyRoute
-  '/manuscript-strcount': typeof ManuscriptStrcountIndexLazyRoute
+  '/': typeof IndexLazyRoute
+  '/about': typeof AboutLazyRoute
 }
 
 export interface FileRoutesByTo {
-  '/manuscript-strcount/about': typeof ManuscriptStrcountAboutLazyRoute
-  '/manuscript-strcount': typeof ManuscriptStrcountIndexLazyRoute
+  '/': typeof IndexLazyRoute
+  '/about': typeof AboutLazyRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
-  '/manuscript-strcount/about': typeof ManuscriptStrcountAboutLazyRoute
-  '/manuscript-strcount/': typeof ManuscriptStrcountIndexLazyRoute
+  '/': typeof IndexLazyRoute
+  '/about': typeof AboutLazyRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/manuscript-strcount/about' | '/manuscript-strcount'
+  fullPaths: '/' | '/about'
   fileRoutesByTo: FileRoutesByTo
-  to: '/manuscript-strcount/about' | '/manuscript-strcount'
-  id: '__root__' | '/manuscript-strcount/about' | '/manuscript-strcount/'
+  to: '/' | '/about'
+  id: '__root__' | '/' | '/about'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
-  ManuscriptStrcountAboutLazyRoute: typeof ManuscriptStrcountAboutLazyRoute
-  ManuscriptStrcountIndexLazyRoute: typeof ManuscriptStrcountIndexLazyRoute
+  IndexLazyRoute: typeof IndexLazyRoute
+  AboutLazyRoute: typeof AboutLazyRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
-  ManuscriptStrcountAboutLazyRoute: ManuscriptStrcountAboutLazyRoute,
-  ManuscriptStrcountIndexLazyRoute: ManuscriptStrcountIndexLazyRoute,
+  IndexLazyRoute: IndexLazyRoute,
+  AboutLazyRoute: AboutLazyRoute,
 }
 
 export const routeTree = rootRoute
@@ -111,15 +101,15 @@ export const routeTree = rootRoute
     "__root__": {
       "filePath": "__root.tsx",
       "children": [
-        "/manuscript-strcount/about",
-        "/manuscript-strcount/"
+        "/",
+        "/about"
       ]
     },
-    "/manuscript-strcount/about": {
-      "filePath": "manuscript-strcount/about.lazy.tsx"
+    "/": {
+      "filePath": "index.lazy.tsx"
     },
-    "/manuscript-strcount/": {
-      "filePath": "manuscript-strcount/index.lazy.tsx"
+    "/about": {
+      "filePath": "about.lazy.tsx"
     }
   }
 }

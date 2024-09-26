@@ -1,6 +1,6 @@
 import { createLazyFileRoute } from '@tanstack/react-router'
 
-export const Route = createLazyFileRoute('/manuscript-strcount/')({
+export const Route = createLazyFileRoute('/')({
   component: Index,
 })
 

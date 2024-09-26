@@ -9,7 +9,7 @@ const dev = import.meta.env.DEV
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <RouterProvider router={router} basepath='/manuscript-strcount/' />
     {dev && <TanStackRouterDevtools router={router} />}
   </StrictMode>,
 )

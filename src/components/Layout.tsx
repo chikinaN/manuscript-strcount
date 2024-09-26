@@ -4,10 +4,10 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <main>
       <header className="p-2 flex gap-2">
-        <Link to="/manuscript-strcount" className="[&.active]:font-bold">
+        <Link to="/" className="[&.active]:font-bold">
           Home
         </Link>{' '}
-        <Link to="/manuscript-strcount/about" className="[&.active]:font-bold">
+        <Link to="/about" className="[&.active]:font-bold">
           About
         </Link>
       </header>
