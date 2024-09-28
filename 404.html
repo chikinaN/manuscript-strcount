@@ -6,9 +6,12 @@
 	<title>Document</title>
 	<script>
 		const url = window.location.href;
-		const project = url.split('/')[3];
+		const path = url.split('/');
+		const project = path[3];
+		const page = path[4];
 		console.log(project);
-		location.href = `/${project}/`;
+		console.log(page);
+		location.href = `/${project}/?page=${page}`;
 	</script>
 </head>
 <body>
